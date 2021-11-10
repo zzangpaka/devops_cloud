@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>JinA의 프로필</h1>
+<h2>자기소개</h2>
+<ul>
+    {% for me in my_self %}
+    <li>{{ me }}</li>
+    {% endfor %}
+</ul>
+<h3>좋아하는 음식</h3>
+<ul>
+    {% for food in like_foods %}
+    <li>{{ food }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}

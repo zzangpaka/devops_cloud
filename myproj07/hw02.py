@@ -6,10 +6,7 @@ def myfilter(filter_fn, alter_value):
         def inner(*args):
             new_args = []
             for arg in args:
-                if filter_fn(arg):
-                    new_args.append(alter_value)
-                else:
-                    new_args.append(arg)
+                new_args.append(alter_value if filter_fn(arg) else arg)
             return fn(*new_args)
 
         return inner

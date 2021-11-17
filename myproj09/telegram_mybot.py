@@ -1,4 +1,3 @@
-# 마이봇 = 짱파카
 import os
 import sys
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters

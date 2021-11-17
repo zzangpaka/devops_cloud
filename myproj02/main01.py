@@ -1,4 +1,3 @@
-# 수업 이틀째
 import random
 
 # number = 10

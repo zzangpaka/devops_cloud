@@ -1,4 +1,3 @@
-# 수업 6일째
 from typing import List
 import pandas as pd
 

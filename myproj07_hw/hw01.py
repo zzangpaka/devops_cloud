@@ -1,4 +1,3 @@
-# 일곱번째 과제
 def myfilter(filter_fn, alter_value):
     def wrap(fn):
         def inner(*args):

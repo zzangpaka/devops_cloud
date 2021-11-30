@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>진아의 독서감상문</title>
+    <style>
+        hr{
+            color: darkgray;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        h1 {
+            font-weight: bold;
+            color: black;
+        }
+
+        h1:hover {
+            color: pink;
+            cursor: pointer;
+        }
+        #top_nav li {
+            display: inline-block;
+        }
+
+        #top_nav li a {
+            color: black;
+            text-decoration: none;
+        }
+
+        #top_nav li a:hover {
+            font-weight: bold;
+            color: pink;
+            cursor: pointer;
+        }
+    </style>
+    <nav>
+        <ul id="top_nav">
+            <li>
+                <a href="/">처음으로</a>
+            </li>
+            <li>
+                <a href="/book_report">감상문</a>
+            </li>
+            <li>
+                <a href="https://github.com/zzangpaka">깃허브</a>
+            </li>
+        </ul>
+    </nav>
+    <hr/>
+</head>
+<body>
+    <hr/>
+    {% block content %}
+    {% endblock %}
+    <br>
+    <br>
+    <br>
+    <br>
+    <hr/>
+    <a style="color:dimgrey"> &copy; 2021. JinA Kim :)</a>
+
+
+</body>
+</html>

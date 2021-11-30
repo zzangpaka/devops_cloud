@@ -1,0 +1,17 @@
+{% extends "book_report/layout.html" %}
+
+{% block content %}
+    <center>
+    <h1>{{ post.book_name }}</h1></center>
+    <br>
+
+    {% if post.photo %}
+        <img src="{{ post.photo.url }}" style="width: 350px; height: 350px; margin: 0 auto; display: block;" />
+    {% endif %}
+
+    {{ post.content|linebreaks }}
+    <br>
+
+    <p style="color:palevioletred", align="right">
+        {{ post.updated_at }} </p>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "book_report/layout.html" %}
+
+{% block content %}
+
+    <h1>JinA's Book Report!</h1>
+
+    <form action="" method="get">
+        <input type="text" name="q" value="{{ request.GET.q }}" />
+        <input type="submit" value="장르 검색" />
+        <input type="text" name="q2" value="{{ request.GET.q2 }}" />
+        <input type="submit" value="제목 검색" />
+        <input type="text" name="q3" value="{{ request.GET.q3 }}" />
+        <input type="submit" value="작가 검색" />
+    <br>
+    <br>
+    </form>
+
+    <style>
+        dt{
+            font-weight: bold;
+            color: palevioletred;
+        }
+        dd{
+            color: dimgrey;
+        }
+    </style>
+
+
+    <ul>
+        {% for post in post_list %}
+        <dt>
+            <li href="/book_report/{{ post.pk }}/">
+                {{ post.genre }}
+            </li>
+            <dd>
+                <a href="/book_report/{{ post.pk }}/">
+                    {{ post.book_name }}
+                </a>
+                <href="/book_report/{{ post.pk }}/">
+                    {{ post.author_name }}
+            </dd>
+            <dd href="/book_report/{{ post.pk }}/">
+                {{ post.updated_at }}
+            </dd>
+        </dt>
+
+        {%  endfor %}
+    </ul>
+
+{% endblock %}

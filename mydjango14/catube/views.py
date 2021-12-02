@@ -1,17 +1,25 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.views.generic import ListView
+
 from catube.models import Video
 
 
-def index(request: HttpRequest) -> HttpResponse:
-    qs = Video.objects.all()
-    return render(
-        request,
-        "catube/index.html",
-        {
-            "video_list": qs,
-        },
-    )
+# Class Based View (CBV)
+index = ListView.as_view(model=Video, template_name="catube/index.html")
+
+
+# Function Based View (FBV)
+
+# def index(request: HttpRequest) -> HttpResponse:
+#     qs = Video.objects.all()
+#     return render(
+#         request,
+#         "catube/index.html",
+#         {
+#             "video_list": qs,
+#         },
+#     )
 
 
 def video_detail(request: HttpRequest, pk: int) -> HttpResponse:

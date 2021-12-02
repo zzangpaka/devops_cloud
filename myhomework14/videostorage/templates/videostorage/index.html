@@ -2,15 +2,44 @@
 
 {% block content %}
 
-    <h2>Hello!</h2>
+    <style>
+
+        h1 {
+            font-weight: bold;
+            font-size: 80px;
+        }
+
+    </style>
+
     <br>
     <br>
     <br>
-    <li>백색소음</li>
-    <li>캐롤</li>
-    <li>술</li>
+    <br>
+    <br>
+    <h1 class="text-center">Hello!</h1>
     <br>
     <br>
     <br>
+
+    <div class="row">
+        {% for video in video_list %}
+            <div class="col-4 my-3">
+                <div class="card">
+                    <a href="/videostorage/{{ video.pk }}/">
+                        <img src="{{ video.thumbnail_file_thumb.url }}"
+                             alt="{{ video.title }}"
+                             class="card-img-top"
+                        />
+                    </a>
+
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ video.title }}
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

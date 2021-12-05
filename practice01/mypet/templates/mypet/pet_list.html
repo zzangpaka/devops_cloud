@@ -2,15 +2,17 @@
 {% block content %}
 
     <form action="" method="get">
-        <input type="text" name="q" value="{{ request.GET.q }}" />
+        <input type="text" name="query" />
         <input type="submit" value="검색" />
     </form>
 
+    <br>
+    <br>
     <ul>
-        {% for post in pet_list %}
+        {% for pet in pet_list %}
         <li>
-            <a href="/mypet_list/{{ post.pk }}/">
-                {{ post.title }}
+            <a href="/mypet/{{ pet.pk }}/">
+                {{ pet.name }} : {{ pet.title }} {{ pet.updated_at }}
             </a>
         </li>
         {% endfor %}

@@ -22,9 +22,9 @@ def pet_list(request: HttpRequest) -> HttpResponse:
     return render(request, "mypet/pet_list.html", context_data)
 
 
-def pet_detail(request: HttpRequest) -> HttpResponse:
+def pet_detail(request: HttpRequest, pk: int) -> HttpResponse:
     pet = Pet.objects.get(pk=pk)
     context_data = {
         "pet": pet,
     }
-    return render(request, "mypet/shop_detail.html", context_data)
+    return render(request, "mypet/pet_detail.html", context_data)

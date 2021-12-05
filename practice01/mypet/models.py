@@ -7,6 +7,7 @@ class Type(models.TextChoices):
 
 
 class Pet(models.Model):
+    title = models.CharField(max_length=100, default=True, verbose_name="제목")
     name = models.CharField(max_length=10, verbose_name="이름")
     gender = models.CharField(max_length=2, choices=Type.choices, default="남자", verbose_name="성별")
     age = models.FloatField(verbose_name="나이")

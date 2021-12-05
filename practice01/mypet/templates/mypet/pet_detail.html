@@ -1,0 +1,19 @@
+{% extends "mypet/layout.html" %}
+{% block content %}
+
+    <br>
+    <h2>{{ pet.title }}</h2>
+    <p>{{ pet.name }} {{ pet.gender }} {{ pet.age }}살 {{ pet.weight }}키로</p>
+    <br>
+
+    {% if pet.photo %}
+    <center><img src="{{ pet.photo.url }}" style="max-width: 50%;" /></center>
+    {% endif %}
+
+    {{ pet.description|linebreaks }}
+
+    <br>
+    <hr/>
+    {{ pet.updated_at }}
+
+{% endblock %}

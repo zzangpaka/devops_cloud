@@ -3,7 +3,12 @@
 
     <br>
     <h2>{{ pet.title }}</h2>
-    <p>{{ pet.name }} {{ pet.gender }} {{ pet.age }}살 {{ pet.weight }}키로</p>
+    <p>{{ pet.name }} {{ pet.gender }} {{ pet.age }}살 {{ pet.weight }}키로
+        {% if pet.neutralize is True %}
+            중성화O
+        {% else %}
+            중성화X
+        {% endif %}</p>
     <br>
 
     {% if pet.photo %}

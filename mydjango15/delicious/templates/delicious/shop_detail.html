@@ -12,5 +12,5 @@
     {{ shop.description|linebreaks }}
 
     <hr/>
-    <a href="/delicious/" class="btn btn">목록으로</a>
+    <a href="{% url "delicious:shop_list" %}" class="btn btn">목록으로</a>
 {% endblock %}

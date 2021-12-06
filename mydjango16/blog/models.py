@@ -26,3 +26,6 @@ class Comment(models.Model):
 
 class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self) -> str:
+        return self.name

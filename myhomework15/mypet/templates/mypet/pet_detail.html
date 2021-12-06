@@ -1,0 +1,23 @@
+{% extends "mypet/layout.html" %}
+{% block content %}
+
+    <br>
+    <h2>{{ pet.title }}</h2>
+    <p>{{ pet.name }} {{ pet.gender }} {{ pet.age }}살 {{ pet.weight }}키로
+        {% if pet.neutralize is True %}
+            중성화O
+        {% else %}
+            중성화X
+        {% endif %}</p>
+    <br>
+
+    {% if pet.photo %}
+    <center><img src="{{ pet.photo.url }}" style="max-width: 50%;"></center>
+    {% endif%}
+    <br>
+    {{ pet.description|linebreaks }}
+    <br>
+    <br>
+    {{ pet.updated_at }}
+
+{% endblock %}

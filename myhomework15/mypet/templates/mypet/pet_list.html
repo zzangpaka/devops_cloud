@@ -1,0 +1,20 @@
+{% extends "mypet/layout.html" %}
+{% block content %}
+
+    <form action="" method="get">
+        <input type="text" name="query">
+        <input type="submit" value="검색">
+    </form>
+
+    <br>
+    <br>
+    <ul>
+        {% for pet in pet_list %}
+        <li>
+            <a href="/mypet/{{ pet.pk }}">
+                {{ pet.name }} : {{ pet.title }} {{ pet.updated_at }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

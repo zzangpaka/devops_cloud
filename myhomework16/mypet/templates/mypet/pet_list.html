@@ -1,0 +1,26 @@
+{% extends 'mypet/layout.html' %}
+
+{% block content %}
+    <form action="" method="get">
+        <input type="text" name="query" />
+        <input type="submit" value="검색" />
+    </form>
+
+    <div class="row">
+        {% for mypet in pet_list %}
+            <div class="col-lg-6 my-3">
+                <div class="card">
+                    <a href="/mypet/{{ mypet.pk }}">
+                        <img src="{{ mypet.thumbnail.url }}" class="card-img-top" />
+                    </a>
+
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            {{ mypet.title }}
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -16,12 +16,29 @@ class Post(TimestampedModel):
     photo = models.ImageField(upload_to="diary/post/%y/%m/%d")
     tag_set = models.ManyToManyField("Tag", blank=True)
 
+    def __str__(self):
+        return self.title
+    
+    class Meta:
+        verbose_name = "포스팅"
+        verbose_name_plural = "포스팅 목록"
+
 
 class Comment(TimestampedModel):
     author_name = models.CharField(max_length=20)
     message = models.TextField()
 
+    class Meta:
+        verbose_name = "코멘트"
+        verbose_name_plural = "코멘트 목록"
 
 
 class Tag(TimestampedModel):
     name = models.CharField(max_length=200, db_index=True)
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "태그"
+        verbose_name_plural = "태그 목록"

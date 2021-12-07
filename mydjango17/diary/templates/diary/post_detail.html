@@ -3,7 +3,7 @@
 {% block content%}
     <h2>{{ post.title }}</h2>
     <br>
-    <center><img src="{{ post.photo.url }}" alt="{{ post.title }}" /></center>
+    <center><img src="{{ post.photo.url }}" alt="{{ post.title }}" style="max-width: 25%;" /></center>
     {{ post.content|linebreaks }}
     <br>
     <br>

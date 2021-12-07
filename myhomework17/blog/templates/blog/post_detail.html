@@ -7,9 +7,9 @@
     <p>
         태그:
         {% for tag in tag_list %}
-            <span class="badge bg-success">
+            <a href="{% url "blog:tag_detail" tag.name %}" class="badge bg-success">
                 {{ tag.name }}
-            </span>
+            </a>
         {% endfor %}
     </p>
     <center><img src="{{ post.photo.url }}" alt="{{ post.title }}" style="max-width: 25%;" /></center>

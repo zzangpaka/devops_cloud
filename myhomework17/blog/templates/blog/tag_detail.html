@@ -1,0 +1,15 @@
+{% extends "blog/layout.html" %}
+
+{% block content %}
+
+    <h2>{{ tag_name }}</h2>
+
+    <div>
+        {% for post in post_list %}
+            <div>
+                {{ post.title }}
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

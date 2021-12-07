@@ -1,0 +1,17 @@
+{% extends "book/layout.html" %}
+
+{% block content %}
+
+    <ul>
+        {% for profile in profile %}
+            <li>{{ profile.title }}"></li>
+            <br>
+            <li>"{{ profile.photo }}"></li>
+            <br>
+            <li>
+                {{ profile.content }}
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

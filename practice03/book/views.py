@@ -14,7 +14,17 @@ def tag_detail(request: HttpRequest, tag_name: str) -> HttpResponse:
 
 
 def profile(request: HttpRequest) -> HttpResponse:
-    return render(request, "book/profile.html")
+    qs = Book.objects.all()
+
+    query = request.GET.get("query", "")
+    if query:
+        qs = qs.filter(title__icontains=query)
+
+    context_data = {
+        "book_list": qs,
+    }
+
+    return render(request, "book/profile.html", context_data)
 
 
 def book_list(request: HttpRequest) -> HttpResponse:

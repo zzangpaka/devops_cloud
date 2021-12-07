@@ -17,10 +17,16 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import redirect
+
+
+def profile(request):
+    return redirect("book:profile")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('book/', include('book.urls'))
+    path('book/', include('book.urls')),
+    path('', profile, name="profile"),
 ]
 
 

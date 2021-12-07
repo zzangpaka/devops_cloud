@@ -1,0 +1,14 @@
+{% extends "diary/layout.html" %}
+
+{% block content%}
+    <h2>{{ post.title }}</h2>
+    <br>
+    <center><img src="{{ post.photo.url }}" alt="{{ post.title }}" /></center>
+    {{ post.content|linebreaks }}
+    <br>
+    <br>
+    <a href="{% url "diary:post_list" %}">
+    목록으로
+    </a>
+    <br>
+{% endblock %}

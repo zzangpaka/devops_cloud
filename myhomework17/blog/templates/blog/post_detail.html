@@ -4,12 +4,30 @@
 
     <h2>{{ post.title }}</h2>
     <br>
+    <p>
+        태그:
+        {% for tag in tag_list %}
+            <span class="badge bg-success">
+                {{ tag.name }}
+            </span>
+        {% endfor %}
+    </p>
     <center><img src="{{ post.photo.url }}" alt="{{ post.title }}" style="max-width: 25%;" /></center>
     {{ post.content|linebreaks }}
     <br>
+    <h3>댓글</h3>
+    <ul>
+        {% for comment in comment_list %}
+            <li>
+                {{ comment.message }}
+                by {{ comment.name }}
+                at {{ comment.updated_at }}
+            </li>
+        {% endfor %}
+    </ul>
     <br>
     <a href="{% url "blog:post_list" %}">
-    목록으로
+        목록으로
     </a>
     <br>
 

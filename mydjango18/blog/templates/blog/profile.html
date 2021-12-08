@@ -1,0 +1,10 @@
+{% extends "blog/layout.html" %}
+
+{% block content %}
+    <center><h1>{{ profile.title }}</h1></center>
+    <br>
+    <br>
+    <center>{{ profile.photo.url }}</center>
+    <br>
+    <center>{{ profile.content }}</center>
+{% endblock %}

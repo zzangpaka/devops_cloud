@@ -11,7 +11,7 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Post)
 class PostAdmin(admin.ModelAdmin):
-    list_display = ["id", "title", "author", "updated_at"]
+    list_display = ["id", "genre", "title", "author", "updated_at"]
     list_display_links = ["title"]
 
 

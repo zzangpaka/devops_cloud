@@ -1,4 +1,6 @@
 from django.db import models
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 
 class Genre(models.TextChoices):
@@ -33,6 +35,12 @@ class Post(TimestampedModel):
     title = models.CharField(max_length=50, db_index=True, verbose_name="제목")
     content = models.TextField(verbose_name="감상평")
     photo = models.ImageField(upload_to="blog/post/%y/%m/%d", blank=True, verbose_name="표지사진")
+    thumbnail = ImageSpecField(
+        source="photo",
+        processors=[ResizeToFill(250, 360)],
+        format="JPEG",
+        options={"quality": 80},
+    )
     tag_set = models.ManyToManyField("Tag", blank=True, verbose_name="태그")
 
     def __str__(self):

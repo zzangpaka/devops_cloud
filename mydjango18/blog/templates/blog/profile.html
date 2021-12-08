@@ -1,10 +1,26 @@
 {% extends "blog/layout.html" %}
 
 {% block content %}
-    <center><h1>{{ profile.title }}</h1></center>
-    <br>
-    <br>
-    <center>{{ profile.photo.url }}</center>
-    <br>
-    <center>{{ profile.content }}</center>
+    <style>
+        .outer{
+            display: flex;
+        }
+        .inner{
+            margin: auto;
+        }
+    </style>
+    <div>
+        {% for profile in profile %}
+            <h2>
+                {{ profile.title }}
+            </h2>
+
+            <img src="{{ profile.photo.url }}" alt="{{ profile.title }}" style="max-width: 15%;" />
+
+            <p>
+                {{ profile.content|linebreaks }}
+            </p>
+        {% endfor %}
+    </div>
+
 {% endblock %}

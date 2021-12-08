@@ -1,7 +1,11 @@
+from django.urls import path
+
 from blog import views
 
 
 app_name = 'blog'
 
 
-urlpatterns = []
+urlpatterns = [
+    path("", views.profile, name="profile"),
+]

@@ -48,25 +48,31 @@ def post_detail(request: HttpRequest, pk: int) -> HttpResponse:
 
 
 def post_new(request: HttpRequest) -> HttpResponse:
-    # print("request.method :", request.method)
-    # print("request.GET :", request.GET)
-    # print("request.POST :", request.POST)
-    # print("request.FILES :", request.FILES)
-
-    # 입력 서식을 보여줌
-    if request.method == "GET":
-        form = PostForm()
-    # 서식 입력값을 전달받아 유효성 검사 실행
-    # -> 에러 상황에서 에러메세지 출력
-    # -> 유효성 검사 통과 시 입력값을 출력하고 post_list로 이동
-    else:
+    if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
-            print("유효성 검사에 통과했습니다. :", form.cleaned_data)
-            form.save() # ModelForm에서만 지원
+            form.save()
             return redirect("diary:post_list")
-        else:
-            pass
+    else:
+        form = PostForm()
+
+    return render(request, "diary/post_form.html", {
+        "form": form,
+    })
+
+
+def post_edit(request: HttpRequest, pk: int) -> HttpResponse:
+    # 아래 코드는 ModelForm에 한해서 동작함
+    post = Post.objects.get(pk=pk)
+
+
+    if request.method == "POST":
+        form = PostForm(request.POST, request.FILES, instance=post)
+        if form.is_valid():
+            form.save()
+            return redirect("diary:post_list")
+    else:
+        form = PostForm(instance=post)
 
     return render(request, "diary/post_form.html", {
         "form": form,

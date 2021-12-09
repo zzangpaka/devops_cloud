@@ -15,6 +15,7 @@ class Post(TimestampedModel):
     content = models.TextField()
     photo = models.ImageField(upload_to="diary/post/%y/%m/%d")
     tag_set = models.ManyToManyField("Tag", blank=True)
+    ip = models.GenericIPAddressField()
 
     def __str__(self):
         return self.title

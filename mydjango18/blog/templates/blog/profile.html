@@ -1,19 +1,22 @@
 {% extends "blog/layout.html" %}
 
 {% block content %}
-    <center><div>
-        {% for profile in profile %}
-            <h2>
-                {{ profile.title }}
-            </h2>
-            <br>
-            <br>
-            <img src="{{ profile.photo.url }}" alt="{{ profile.title }}" style="max-width: 15%;" />
-            <br>
-            <p>
-                {{ profile.content|linebreaks }}
-            </p>
-        {% endfor %}
-    </div></center>
+    <div class="row featurette">
+        <div class="col-md-7">
+            {% for profile in profile %}
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2 class="featurette-heading">{{ profile.title }}</h2>
+                <br>
+                <br>
+                <p class="lead">{{ profile.content|linebreaks }}</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ profile.photo.url }}" width=65%" title="{{ profile.title }}"/>
+            {% endfor %}
+            </div>
+    </div>
 
 {% endblock %}

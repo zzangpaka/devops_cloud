@@ -3,10 +3,48 @@
 {% block content %}
 
     <h2>{{ shop.name }}</h2>
+    <br>
+    <p>
+        태그:
+        {% for tag in tag_list %}
+            <a href="{% url "shop:tag_detail" tag.name %}" class="badge bg-success">
+                {{ tag.name }}
+            </a>
+        {% endfor %}
+    </p>
+    <center><img src="{{ shop.photo.url }}" alt="{{ shop.name }}" style="max-width: 25%;"/></center>
+    {{ shop.description|linebreaks }} {{ shop.updated_at|timesince }} 전에 등록
 
-    {{ shop.description }}
+    <h3>리뷰</h3>
 
-    <hr />
-    {{ shop.created_at|timesince }} 전에 등록
+    <a href="{% url "shop:review_new" shop.pk %}">리뷰 쓰기</a>
+
+    <ul>
+        {% for review in review_list %}
+            <li>
+                {{ review.message }}
+                {% if review.reorder is True %}
+                    [재주문의사 O]
+                {% else %}
+                    [재주문의사 X]
+                {% endif %}
+                by {{ review.author_name }}
+                <span title="{{ review.created_at }}">
+                    {{ review.updated_at|timesince }} 전
+                </span>
+
+                <a href="{% url "shop:review_edit" shop.pk review.pk %}">Edit</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <br>
+    <br>
+    <a href="{% url "shop:shop_list" %}">
+        목록으로
+    </a>
+    <a href="{% url "shop:shop_edit" shop.pk %}">
+        수정하기
+    </a>
+    <br>
 
 {% endblock %}

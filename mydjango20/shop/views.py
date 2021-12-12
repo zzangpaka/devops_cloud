@@ -26,9 +26,17 @@ def shop_list(request: HttpRequest) -> HttpResponse:
 
 def shop_detail(request: HttpRequest, pk: int) -> HttpResponse:
     shop = get_object_or_404(Shop, pk=pk)
-    return render(request, "shop/shop_detail.html", {
-        "shop": shop,
-    })
+
+    review_list = shop.review_set.all()
+    tag_list = shop.tag_set.all()
+
+    return render(request, "shop/shop_detail.html",
+        {
+            "shop": shop,
+            "review_list": review_list,
+            "tag_list": tag_list,
+        },
+    )
 
 
 def shop_new(request: HttpRequest) -> HttpResponse:
@@ -37,10 +45,11 @@ def shop_new(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
         form = ShopForm(request.POST, request.FILES)
         if form.is_valid():
-            saved_post = form.save()
+            saved_post = form.save(commit=False)
+            saved_post.save()
             messages.success(request, "성공적으로 등록했습니다.")
             # shop_detail 뷰를 구현했다면
-            return redirect("shop:shop_detail", saved_post.pk)
+            return redirect("shop:shop_list")
     else:
         form = ShopForm()
 
@@ -49,19 +58,22 @@ def shop_new(request: HttpRequest) -> HttpResponse:
     })
 
 
-def shop_edit(request: HttpRequest, shop_pk: int, pk: int) -> HttpResponse:
+def shop_edit(request: HttpRequest, pk: int) -> HttpResponse:
     shop = get_object_or_404(Shop, pk=pk)
 
     if request.method == "POST":
         form = ShopForm(request.POST, request.FILES, instance=shop)
         if form.is_valid():
             edit_post = form.save()
+            edit_post.save()
             messages.success(request, "성공적으로 수정했습니다.")
-            return render(request, "shop/shop_form.html", {
-                "form": form
-            })
+            return redirect("shop:shop_detail", pk)
     else:
         form = ShopForm(instance=shop)
+
+    return render(request, "shop/shop_form.html", {
+        "form": form
+    })
 
 
 def review_new(request: HttpRequest, shop_pk: int) -> HttpResponse:
@@ -88,6 +100,7 @@ def review_edit(request: HttpRequest, shop_pk: int, pk: int) -> HttpResponse:
         form = ReviewForm(request.POST, request.FILES, instance=review)
         if form.is_valid():
             edit_review = form.save()
+            edit_review.save()
             messages.success(request, "성공적으로 수정했습니다.")
             return redirect("shop:shop_detail", shop_pk)
     else:

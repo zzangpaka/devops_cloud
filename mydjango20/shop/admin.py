@@ -5,7 +5,6 @@ from shop.models import Shop, Review, Tag, Menu
 @admin.register(Shop)
 class ShopAdmin(admin.ModelAdmin):
     list_display = ["name", "telephone"]
-    list_display_links = ["name"]
 
 
 @admin.register(Menu)
@@ -15,10 +14,11 @@ class MenuAdmin(admin.ModelAdmin):
 
 @admin.register(Review)
 class ReviewAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["author_name", "message"]
+    list_display_links = ["message"]
 
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["name"]
 

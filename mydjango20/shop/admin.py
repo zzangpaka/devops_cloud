@@ -1,5 +1,10 @@
 from django.contrib import admin
-from shop.models import Shop, Review, Tag, Menu
+from shop.models import Category, Shop, Review, Tag, Menu
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Shop)

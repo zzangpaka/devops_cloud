@@ -10,7 +10,15 @@ class TimestampedModel(models.Model):
         abstract = True
 
 
+class Category(TimestampedModel):
+    name = models.CharField(max_length=100, unique=True)
+
+    def __str__(self) -> str:
+        return self.name
+
+
 class Shop(TimestampedModel):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, db_index=True, verbose_name="가게명")
     description = models.TextField(verbose_name="가게정보")
     telephone = models.CharField(max_length=14,

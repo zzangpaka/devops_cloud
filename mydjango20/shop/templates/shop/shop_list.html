@@ -21,6 +21,9 @@
                 </div>
             {% endfor %}
         <div class="col-sm-4">
+        <div class="d-grid mb-3">
+            <a href="{% url "shop:shop_new" %}" class="btn btn-primary">새 포스팅 쓰기</a>
+        </div>
             <ul>
                 <li>
                     <a href="?category_id=">
@@ -37,9 +40,5 @@
             </ul>
         </div>
     </div>
-    <hr/>
-    <a href="{% url "shop:shop_new" %}" class="btn btn-primary">
-        포스팅 쓰기
-    </a>
 
 {% endblock %}

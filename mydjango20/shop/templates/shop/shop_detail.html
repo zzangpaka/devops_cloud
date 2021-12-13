@@ -6,7 +6,7 @@
     <br>
     <p>
         태그:
-        {% for tag in tag_list %}
+        {% for tag in shop.tag_set.all %}
             <a href="{% url "shop:tag_detail" tag.name %}" class="badge bg-success">
                 {{ tag.name }}
             </a>

@@ -7,7 +7,7 @@ from shop.forms import ShopForm, ReviewForm
 
 
 # /shop/100/
-from shop.models import Shop, Review, Category
+from shop.models import Shop, Review, Category, Tag
 
 
 def shop_list(request: HttpRequest) -> HttpResponse:
@@ -22,12 +22,10 @@ def shop_list(request: HttpRequest) -> HttpResponse:
     if query:
         qs = qs.filter(name__icontains=query)
 
-    context_data = {
+    return render(request, "shop/shop_list.html", {
         "category_list": category_qs,
         "shop_list": qs,
-    }
-
-    return render(request, "shop/shop_list.html", context_data)
+    })
 
 
 def shop_detail(request: HttpRequest, pk: int) -> HttpResponse:
@@ -51,11 +49,10 @@ def shop_new(request: HttpRequest) -> HttpResponse:
     if request.method == "POST":
         form = ShopForm(request.POST, request.FILES)
         if form.is_valid():
-            saved_post = form.save(commit=False)
-            saved_post.save()
+            saved_post = form.save()
             messages.success(request, "성공적으로 등록했습니다.")
             # shop_detail 뷰를 구현했다면
-            return redirect("shop:shop_list")
+            return redirect("shop:shop_detail", saved_post.pk)
     else:
         form = ShopForm()
 

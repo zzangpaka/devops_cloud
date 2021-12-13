@@ -11,5 +11,5 @@ class ShopForm(forms.ModelForm):
             "category",
             "name",
             "telephone",
-            "description"
+            "description",
         ]

@@ -4,9 +4,9 @@
 
     <div class="row" style="margin-top: 1em;">
         {#            <a href="?category_id={{ category.pk }}"></a>#}
-        <div class="col-sm-8" style="margin-bottom: 1em;">
+        <div style="margin-bottom: 1em;">
             {% for shop in shop_list %}
-                <div class="card">
+                <div class="card" class="col-sm-4">
                     <img src="{{ shop.photo.url }}"
                          alt="{{ shop.name }}"
                          class="card-img-top">
@@ -16,10 +16,10 @@
                         <a href="{% url "shop:shop_detail" shop.pk %}" class="btn btn-sm btn-primary">
                             바로가기
                         </a>
+            {% endfor %}
                     </div>
                 </div>
-                </div>
-            {% endfor %}
+        </div>
         <div class="col-sm-4">
         <div class="d-grid mb-3">
             <a href="{% url "shop:shop_new" %}" class="btn btn-primary">새 포스팅 쓰기</a>

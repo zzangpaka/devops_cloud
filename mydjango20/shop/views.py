@@ -68,9 +68,8 @@ def shop_edit(request: HttpRequest, pk: int) -> HttpResponse:
         form = ShopForm(request.POST, request.FILES, instance=shop)
         if form.is_valid():
             edit_post = form.save()
-            edit_post.save()
             messages.success(request, "성공적으로 수정했습니다.")
-            return redirect("shop:shop_detail", pk)
+            return redirect("shop:shop_detail", edit_post.pk)
     else:
         form = ShopForm(instance=shop)
 

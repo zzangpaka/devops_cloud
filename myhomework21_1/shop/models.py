@@ -10,6 +10,10 @@ class Category(models.Model):
         return self.name
 
 
+    class Meta:
+        ordering = ["-id"]
+
+
 class Shop(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, db_index=True)
@@ -27,9 +31,17 @@ class Shop(models.Model):
         return f"[{self.pk}] {self.name}"
 
 
+    class Meta:
+        ordering = ["-id"]
+
+
 class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
 
     def __str__(self) -> str:
         return self.name
+
+
+    class Meta:
+        ordering = ["name"]

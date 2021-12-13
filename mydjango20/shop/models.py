@@ -17,6 +17,10 @@ class Category(TimestampedModel):
         return self.name
 
 
+    class Meta:
+        ordering = ["-id"]
+
+
 class Shop(TimestampedModel):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     name = models.CharField(max_length=100, db_index=True, verbose_name="가게명")
@@ -33,6 +37,10 @@ class Shop(TimestampedModel):
 
     def __str__(self) -> str:
         return f"[{self.pk}] {self.name}"
+
+
+    class Meta:
+        ordering = ["-id"]
 
 
     class Meta:
@@ -66,6 +74,10 @@ class Review(TimestampedModel):
         verbose_name_plural = "리뷰목록"
 
 
+    class Meta:
+        ordering = ["-id"]
+
+
 class Tag(TimestampedModel):
     name = models.CharField(max_length=100, unique=True, verbose_name="태그")
 
@@ -75,3 +87,7 @@ class Tag(TimestampedModel):
     class Meta:
         verbose_name = "태그"
         verbose_name_plural = "태그목록"
+
+
+    class Meta:
+        ordering = ["name"]

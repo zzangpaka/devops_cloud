@@ -7,17 +7,23 @@ from shop.forms import ShopForm, ReviewForm
 
 
 # /shop/100/
-from shop.models import Shop, Review
+from shop.models import Shop, Review, Category
 
 
 def shop_list(request: HttpRequest) -> HttpResponse:
-    qs = Shop.objects.all()
+    category_qs = Category.objects.all()
+    qs = Shop.objects.all() # .order_by("-id") -> 대신 model에서 ordering으로 지정
+
+    category_id: str = request.GET.get("category_id", "")
+    if category_id:
+        qs = qs.filter(category__pk=category_id)
 
     query = request.GET.get("query", "")
     if query:
         qs = qs.filter(name__icontains=query)
 
     context_data = {
+        "category_list": category_qs,
         "shop_list": qs,
     }
 

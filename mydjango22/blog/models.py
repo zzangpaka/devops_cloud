@@ -17,7 +17,7 @@ class Category(models.TextChoices):
 
 
 class Post(TimestampedModel):
-    category = models.CharField(max_length=10, choices=Category, verbose_name="장르")
+    category = models.CharField(max_length=10, choices=Category.choices, verbose_name="장르")
     author_name = models.CharField(max_length=100, verbose_name="작가")
     title = models.CharField(max_length=100, verbose_name="제목")
     photo = models.ImageField(upload_to="blog/post/%y/%m/%d", verbose_name="사진")

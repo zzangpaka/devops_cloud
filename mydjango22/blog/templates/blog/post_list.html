@@ -1,0 +1,11 @@
+{% extends "blog/layout.html" %}
+
+{% block content %}
+
+    {% for post in post_list %}
+
+        {{ post.title|linebreaks }}
+
+    {% endfor %}
+
+{% endblock %}

@@ -24,6 +24,9 @@ class Post(TimestampedModel):
     description = models.TextField(verbose_name="내용")
     tag_set = models.ManyToManyField('tag', blank=True, verbose_name="태그목록")
 
+    def __str__(self) -> str:
+        return f"[{self.pk}] {self.title}"
+
 
 class Review(TimestampedModel):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name="작품")
@@ -32,6 +35,12 @@ class Review(TimestampedModel):
     photo = models.ImageField(upload_to="blog/review/%y/%m/%d", blank=True, verbose_name="사진")
     description = models.TextField(verbose_name="내용")
 
+    def __str__(self) -> str:
+        return f"[{self.pk}] {self.title}"
+
 
 class Tag(TimestampedModel):
     name = models.CharField(max_length=200, unique=True, verbose_name="태그")
+
+    def __str__(self) -> str:
+        return self.name

@@ -2,6 +2,11 @@
 
 {% block content %}
 
+     <p>
+        {% for tag in tag_list %}
+            <span class="badge" style="background-color: steelblue;">{{ tag.name }}</span>
+        {% endfor %}
+    </p>
 
     <h2>{{ post.title }}</h2>
     <br>

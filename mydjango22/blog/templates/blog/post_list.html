@@ -4,8 +4,12 @@
 
     {% for post in post_list %}
 
-        {{ post.title|linebreaks }}
+         <a href="{% url "blog:post_detail" post.pk %}">
 
-    {% endfor %}
+            {{ post.title|linebreaks }}
+
+        </a>
+
+    {% endfor%}
 
 {% endblock %}

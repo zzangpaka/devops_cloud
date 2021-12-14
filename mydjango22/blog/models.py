@@ -25,7 +25,7 @@ class Post(TimestampedModel):
     tag_set = models.ManyToManyField('tag', blank=True, verbose_name="태그목록")
 
     def __str__(self) -> str:
-        return f"[{self.pk}] {self.title}"
+        return f"[{self.pk}] {self.title} {self.author_name}"
 
 
 class Review(TimestampedModel):
@@ -44,3 +44,12 @@ class Tag(TimestampedModel):
 
     def __str__(self) -> str:
         return self.name
+
+
+class Hello(TimestampedModel):
+    title = models.CharField(max_length=100, verbose_name="제목")
+    photo = models.ImageField(upload_to="blog/Hello/%y/%m/%d", verbose_name="사진")
+    content = models.TextField(verbose_name="내용")
+
+    def __str__(self) -> str:
+        return self.title

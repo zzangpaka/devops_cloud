@@ -1,6 +1,11 @@
 from django.contrib import admin
 
-from blog.models import Post, Review, Tag
+from blog.models import Post, Review, Tag, Hello
+
+
+@admin.register(Hello)
+class HelloAdmin(admin.ModelAdmin):
+    list_display = ["title"]
 
 
 @admin.register(Post)

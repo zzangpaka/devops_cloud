@@ -3,12 +3,15 @@
 {% block content %}
 
 
-        <h2>{{ post.title }}</h2>
-        <br>
+    <h2>{{ post.title }}</h2>
+    <br>
         <center><img src="{{ post.photo.url }}" alt="{{ post.title }}" style="max-width: 25%;" /></center>
-        {{ post.description|linebreaks }}
+            {{ post.description|linebreaks }}
         <br>
         <br>
+    <a href="{% url "blog:post_list" %}">
+        목록으로
+    </a>
 
 
 {% endblock %}

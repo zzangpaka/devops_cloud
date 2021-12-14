@@ -2,22 +2,26 @@
 
 {% block content %}
 
-    <form action="" method="get">
-        <input type="text"
-               name="query"
-               placeholder="검색어를 입력해주세요."
-               value="{{ request.GET.query }}"/>
-        <input type="submit" value="검색"/>
-    </form>
+    {% for post in post_list %}
 
-        {% for post in post_list %}
 
-            <a href="{% url "blog:post_detail" post.pk %}">
+        <div class="row mb-2">
+            <div class="col-md-offset-6">
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <strong class="d-inline-block mb-2 text-success">{{ post.category }}</strong>
+                        <h3 class="mb-0">{{ post.title }}</h3>
+                        <div class="mb-1 text-muted">{{ post.updated_at }}</div>
+                        <p class="mb-auto">{{ post.description|truncatewords:50 }}</p>
+                        <a href="{% url "blog:post_detail" post.pk %}" class="stretched-link">자세히 보기</a>
+                    </div>
+                    <div class="col-auto d-none d-lg-block">
+                        <img src="{{ post.photo.url }}" alt="{{ post.title }}" width="200" height="250">
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                {{ post.title|linebreaks }}
-
-            </a>
-
-        {% endfor %}
+    {% endfor %}
 
 {% endblock %}

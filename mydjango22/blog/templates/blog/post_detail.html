@@ -2,36 +2,43 @@
 
 {% block content %}
 
-     <p>
+    <p>
         {% for tag in tag_list %}
             <span class="badge" style="background-color: steelblue;">{{ tag.name }}</span>
         {% endfor %}
     </p>
 
-    <h2>{{ post.title }}</h2>
-    <br>
-        <center><img src="{{ post.photo.url }}" alt="{{ post.title }}" style="max-width: 25%;" /></center>
-            {{ post.description|linebreaks }}
-        <br>
-        <br>
-
+    <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+        <div class="col-10 col-sm-8 col-lg-6">
+            <img src="{{ post.photo.url }}" class="d-block mx-lg-auto img-fluid"
+                 alt="{{ post.title }}" loading="lazy" width="400" height="200">
+        </div>
+        <div class="col-lg-6">
+            <h1 class="display-5 fw-bold lh-1 mb-3">{{ post.title }}</h1>
+            <p class="lead">{{ post.description|linebreaks }}</p>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                <a href="{% url "blog:post_list" %}" type="button" class="btn btn-primary btn-lg px-4 me-md-2">목록으로</a>
+                <a href="#" type="button" class="btn btn-outline-secondary btn-lg px-4">수정하기</a>
+            </div>
+        </div>
+    </div>
     <h3>리뷰</h3>
 
     <ul>
         {% for review in review_list %}
-            <li>
-                {{ review.description }}
-                by {{ review.author_name }}
-                <span title="{{ review.created_at }}">
+            <div>
+                <li>
+                    {{ review.description|truncatewords:20 }}
+                    by {{ review.author_name }}
+                    <span title="{{ review.created_at }}">
                     {{ review.updated_at|timesince }} 전
                 </span>
-            </li>
+                    <a type="button" class="btn btn-primary" href="{% url "blog:review_detail" review.pk %}">자세히 보기</a>
+                    <a type="button" class="btn btn-outline-secondary" href="#">수정하기</a>
+                    </a>
+                </li>
+            </div>
         {% endfor %}
     </ul>
-
-    <a href="{% url "blog:post_list" %}">
-        목록으로
-    </a>
-
 
 {% endblock %}

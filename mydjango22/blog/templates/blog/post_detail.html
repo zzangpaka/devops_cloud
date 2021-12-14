@@ -9,6 +9,21 @@
             {{ post.description|linebreaks }}
         <br>
         <br>
+
+    <h3>리뷰</h3>
+
+    <ul>
+        {% for review in review_list %}
+            <li>
+                {{ review.description }}
+                by {{ review.author_name }}
+                <span title="{{ review.created_at }}">
+                    {{ review.updated_at|timesince }} 전
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+
     <a href="{% url "blog:post_list" %}">
         목록으로
     </a>

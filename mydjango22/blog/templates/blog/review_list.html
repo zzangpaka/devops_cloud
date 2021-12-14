@@ -1,0 +1,15 @@
+{% extends "blog/layout.html" %}
+
+{% block content %}
+
+        {% for review in review_list %}
+
+            <a href="{% url "blog:review_detail" review.pk %}">
+
+                {{ review.title|linebreaks }}
+
+            </a>
+
+        {% endfor %}
+
+{% endblock %}

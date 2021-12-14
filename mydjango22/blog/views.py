@@ -6,6 +6,10 @@ from blog.models import Post
 
 def post_list(request: HttpRequest) -> HttpResponse:
     list = Post.objects.all()
+    query = request.GET.get("query", "")
+
+    if query:
+        list = list.filter(title__icontains=query)
 
     return render(request, "blog/post_list.html", {
         "post_list": list,

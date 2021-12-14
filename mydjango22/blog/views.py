@@ -4,11 +4,17 @@ from django.shortcuts import render
 from blog.models import Post
 
 
-def Post_list(request: HttpRequest) -> HttpResponse:
-    qs = Post.objects.all()
+def post_list(request: HttpRequest) -> HttpResponse:
+    list = Post.objects.all()
 
     return render(request, "blog/post_list.html", {
-        "post_list": qs,
+        "post_list": list,
     })
 
 
+def post_detail(request: HttpRequest, pk: int) -> HttpResponse:
+    post = Post.objects.get(pk=pk)
+
+    return render(request, "blog/post_detail.html", {
+        "post": post,
+    })

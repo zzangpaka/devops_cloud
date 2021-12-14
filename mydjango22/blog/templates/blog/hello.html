@@ -1,0 +1,17 @@
+{% extends "blog/layout.html" %}
+
+{% block content %}
+
+    {% for hello in profile %}
+
+        {{ hello.title }}
+
+        <br>
+        <center><img src="{{ hello.photo.url }}" alt="{{ hello.title }}" style="max-width: 25%;" /></center>
+        {{ hello.content|linebreaks }}
+        <br>
+        <br>
+
+    {% endfor %}
+
+{% endblock %}

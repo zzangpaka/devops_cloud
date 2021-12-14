@@ -4,11 +4,27 @@
 
     {% for hello in profile %}
 
-        {{ hello.title }}
+        <div class="row featurette">
+            <div class="col-md-7">
+                <br>
+                <br>
+                <br>
+                <br>
+                <h2 class="featurette-heading">{{ hello.title }} <span
+                        class="text-muted">안녕하세요 😊</span></h2>
+                <br>
+                <br>
+                <br>
+                <p class="lead">{{ hello.content|linebreaks }}</p>
+            </div>
+            <div class="col-md-5">
+                <img src="{{ hello.photo.url }}" alt="{{ hello.title }}" width="500" height="500"/>
+            </div>
+        </div>
 
         <br>
-        <center><img src="{{ hello.photo.url }}" alt="{{ hello.title }}" style="max-width: 25%;" /></center>
-        {{ hello.content|linebreaks }}
+        <center></center>
+
         <br>
         <br>
 

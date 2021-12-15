@@ -33,6 +33,7 @@ class Post(TimestampedModel):
             ('P', '공개'), # Published
         ],
         db_index=True,
+        default='D',
     )
 
     def __str__(self) -> str:

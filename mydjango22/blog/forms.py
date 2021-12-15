@@ -13,3 +13,9 @@ class PostForm(forms.ModelForm):
             "photo",
             "description",
         ]
+
+
+class ReviewFrom(forms.ModelForm):
+    class Meta:
+        model = Review
+        fields = "__all__"

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import resolve_url
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from shop.forms import ShopForm
@@ -14,16 +14,20 @@ shop_detail = DetailView.as_view(
 )
 
 
-shop_new = CreateView.as_view(
-    model = Shop,
-    form_class = ShopForm,
-)
+class ShopCreateView(CreateView):
+    model = Shop
+    form_class = ShopForm
 
 
-shop_edit = UpdateView.as_view(
+shop_new = ShopCreateView.as_view()
+
+
+class ShopUpdateView(UpdateView):
     model = Shop,
     form_class = ShopForm
-)
+
+
+shop_edit = ShopUpdateView.as_view()
 
 
 shop_delete = DeleteView.as_view(

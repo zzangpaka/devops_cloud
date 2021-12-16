@@ -1,5 +1,5 @@
 from django import forms
-from blog.models import Post
+from blog.models import Post, Review
 
 
 class PostForm(forms.ModelForm):
@@ -15,7 +15,7 @@ class PostForm(forms.ModelForm):
         ]
 
 
-class ReviewFrom(forms.ModelForm):
+class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = "__all__"

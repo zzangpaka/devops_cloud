@@ -15,30 +15,43 @@
         </div>
         <div class="col-lg-6">
             <h1 class="display-5 fw-bold lh-1 mb-3">{{ post.title }}</h1>
+            <h4 class="mb-1 text-muted">{{ post.author_name }}</h4>
             <p class="lead">{{ post.description|linebreaks }}</p>
             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                <a href="{% url "blog:post_list" %}" type="button" class="btn btn-primary btn-lg px-4 me-md-2">목록으로</a>
-                <a href="#" type="button" class="btn btn-outline-secondary btn-lg px-4">수정하기</a>
+                <a href="{% url "blog:post_edit" post.pk %}" type="button" class="btn btn-primary btn-lg px-4 me-md-2">수정하기</a>
+                <a href="{% url "blog:post_delete" post.pk %}" type="button"
+                   class="btn btn-outline-secondary btn-lg px-4">삭제하기</a>
             </div>
         </div>
     </div>
-    <h3>리뷰</h3>
 
-    <ul>
-        {% for review in review_list %}
-            <div>
-                <li>
-                    {{ review.description|truncatewords:20 }}
-                    by {{ review.author_name }}
-                    <span title="{{ review.created_at }}">
+    <h3>리뷰</h3>
+    <a href="{% url "blog:review_new" %}">리뷰쓰기</a>
+
+    <div class="row mb-2">
+        <div class="col-md-offset-6">
+            <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                <div class="col p-4 d-flex flex-column position-static">
+                    <ul>
+                        {% for review in review_list %}
+                            <div class="mb-3">
+                                <li>
+                                    {{ review.description|truncatewords:20 }}
+                                    by {{ review.author_name }}
+                                    <span title="{{ review.created_at }}">
                     {{ review.updated_at|timesince }} 전
                 </span>
-                    <a type="button" class="btn btn-primary" href="{% url "blog:review_detail" review.pk %}">자세히 보기</a>
-                    <a type="button" class="btn btn-outline-secondary" href="#">수정하기</a>
-                    </a>
-                </li>
+                                    <a type="button" class="btn btn-primary"
+                                       href="{% url "blog:review_detail" review.pk %}">자세히 보기</a>
+                                    <a type="button" class="btn btn-outline-secondary"
+                                       href="{% url "blog:review_delete" review.pk %}">삭제하기</a>
+                                </li>
+                            </div>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
-        {% endfor %}
-    </ul>
+        </div>
+    </div>
 
 {% endblock %}

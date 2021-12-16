@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class TimestampedModel(models.Model):
@@ -27,6 +28,9 @@ class Post(TimestampedModel):
     def __str__(self) -> str:
         return f"[{self.pk}] {self.title} {self.author_name}"
 
+    def get_absolute_url(self) -> str:
+        return reverse("blog:post_detail", args=[self.pk])
+
 
 class Review(TimestampedModel):
     post = models.ForeignKey(Post, on_delete=models.CASCADE, verbose_name="작품")
@@ -37,6 +41,9 @@ class Review(TimestampedModel):
 
     def __str__(self) -> str:
         return f"[{self.pk}] {self.title}"
+
+    def get_absolute_url(self) -> str:
+        return reverse("blog:review_detail", args=[self.pk])
 
 
 class Tag(TimestampedModel):

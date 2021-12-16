@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class TimestampedModel(models.Model):
@@ -23,6 +24,7 @@ class Shop(TimestampedModel):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     author_name = models.CharField(max_length=100, db_index=True)
     title = models.CharField(max_length=100, db_index=True)
+    price = models.IntegerField()
     photo = models.ImageField(upload_to="shop/photo/%y/%m/%d")
     description = models.TextField()
     tag_set = models.ManyToManyField('Tag', blank=True)
@@ -32,6 +34,11 @@ class Shop(TimestampedModel):
 
     class Meta:
         ordering = ["-id"]
+
+    def get_absolute_url(self) -> str:
+        return reverse("shop:shop_detail", args=[self.pk])
+
+
 
 
 class Tag(TimestampedModel):
@@ -58,3 +65,6 @@ class Resell(TimestampedModel):
 
     class Meta:
         ordering = ["-id"]
+
+    def get_absolute_url(self) -> str:
+        return reverse("shop:resell_detail", args=[self.pk])

@@ -1,0 +1,30 @@
+{% extends "shop/layout.html" %}
+
+{% block content %}
+
+    <p>
+        {% for category in category_list %}
+            <span class="badge bg-info">
+            {{ category.name }}
+        </span>
+        {% endfor %}
+    </p>
+
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+            <th>상점명</th>
+            <th>등록일</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for shop in shop_list %}
+            <tr>
+                <td>{{ shop.name }}</td>
+                <td>{{ shop.created_at }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

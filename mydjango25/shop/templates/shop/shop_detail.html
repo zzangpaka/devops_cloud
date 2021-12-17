@@ -19,7 +19,21 @@
     {% endif %}
 
     <p>
-    {{ shop.description|default:"설명 준비중입니다." }}
+        {{ shop.description|default:"설명 준비중입니다." }}
     </p>
+
+    <hr/>
+    <h3>리뷰</h3>
+
+    {% for review in shop.review_set.all %}
+        <div>
+            {{ review.message }}
+            by {{ review.user }}
+            at {{ review.created_at }}
+        </div>
+
+    {% empty %}
+        등록된 리뷰가 없습니다.
+    {% endfor %}
 
 {% endblock %}

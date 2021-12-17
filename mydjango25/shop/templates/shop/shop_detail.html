@@ -32,6 +32,9 @@
             {{ review.message }}
             by {{ review.user }}
             at {{ review.created_at }}
+            {% if review.user == request.user %}
+                <a href="{% url "shop:review_edit" shop.pk review.pk %}">수정하기</a>
+            {% endif %}
         </div>
 
     {% empty %}

@@ -7,13 +7,19 @@
     <p>
         {% for tag in shop.tag_set.all %}
             {{ tag.name }}
+        {% empty %}
+            등록된 태그가 없습니다.
         {% endfor %}
     </p>
 
     {% if shop.photo %}
-        <img src="{{ shop.photo.url }}" alt="{{ shop.name }}">
+        <img src="{{ shop.photo.url }}" alt="{{ shop.name }}"/>
+    {% else %}
+        사진 준비중입니다.
     {% endif %}
 
-    {{ shop.description }}
+    <p>
+    {{ shop.description|default:"설명 준비중입니다." }}
+    </p>
 
 {% endblock %}

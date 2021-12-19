@@ -17,14 +17,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import RedirectView
+from django.views.generic import TemplateView
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('shop/', include('shop.urls')),
     path('accounts/', include("accounts.urls")),
-    path('', RedirectView.as_view(url="/shop/"), name="root"),
+    path('', TemplateView.as_view(template_name='root.html'), name="root"),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

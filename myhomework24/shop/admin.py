@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from shop.models import Category, Shop, Tag, Resell
+from shop.models import Category, Shop, Tag, Review
 
 
 @admin.register(Category)
@@ -16,7 +16,7 @@ class ShopAdmin(admin.ModelAdmin):
 class TagAdmin(admin.ModelAdmin):
     list_display = ["name"]
 
-@admin.register(Resell)
-class ResellAdmin(admin.ModelAdmin):
-    list_display = ["category", "title", "user"]
+@admin.register(Review)
+class ReviewAdmin(admin.ModelAdmin):
+    list_display = ["shop", "title", "user"]
     list_display_links = ["title"]

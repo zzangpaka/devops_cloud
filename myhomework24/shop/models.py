@@ -51,13 +51,10 @@ class Tag(TimestampedModel):
         ordering = ["name"]
 
 
-class Resell(TimestampedModel):
+class Review(TimestampedModel):
     shop = models.ForeignKey(Shop, on_delete=models.CASCADE)
     user = models.CharField(max_length=20, db_index=True)
-    parcel = models.BooleanField(null=True, verbose_name="택배비포함")
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     title = models.CharField(max_length=100, db_index=True)
-    photo = models.ImageField(upload_to="shop/photo/%y/%m/%d", blank=True)
     description = models.TextField()
 
     def __str__(self) -> str:
@@ -67,4 +64,4 @@ class Resell(TimestampedModel):
         ordering = ["-id"]
 
     def get_absolute_url(self) -> str:
-        return reverse("shop:resell_detail", args=[self.pk])
+        return reverse("shop:shop_detail", args=[self.pk])

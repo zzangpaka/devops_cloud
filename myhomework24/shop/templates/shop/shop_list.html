@@ -2,6 +2,8 @@
 
 {% block content %}
 
+    <a href="{% url "shop:shop_new" %}">새글쓰기</a>
+
     {% for shop in shop_list %}
 
         <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

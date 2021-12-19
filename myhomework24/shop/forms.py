@@ -1,5 +1,5 @@
 from django import forms
-from shop.models import Shop, Resell
+from shop.models import Shop, Review
 
 
 class ShopForm(forms.ModelForm):
@@ -8,7 +8,11 @@ class ShopForm(forms.ModelForm):
         fields = '__all__'
 
 
-class ResellForm(forms.ModelForm):
+class ReviewForm(forms.ModelForm):
     class Meta:
-        model = Resell
+        model = Review
         fields = '__all__'
+
+
+class DeleteForm(forms.ModelForm):
+    pass

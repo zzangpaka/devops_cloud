@@ -2,14 +2,8 @@
 
 {% block content %}
 
-    <h2>Login Form</h2>
+    <h2>로그인</h2>
 
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <table>
-            {{ form.as_table }}
-        </table>
-        <input type="submit"/>
-    </form>
+    {% include "_form.html" with submit_lable="로그인" %}
 
 {% endblock %}

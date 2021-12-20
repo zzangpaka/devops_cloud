@@ -1,6 +1,12 @@
 from django import forms
 
-from shop.models import Review
+from shop.models import Review, Shop
+
+
+class ShopForm(forms.ModelForm):
+    class Meta:
+        model = Shop
+        fields = "__all__"
 
 
 class ReviewForm(forms.ModelForm):

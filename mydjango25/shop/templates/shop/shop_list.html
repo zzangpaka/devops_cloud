@@ -3,6 +3,8 @@
 
 {% block content %}
 
+    <a href="{% url "shop:shop_new" %}">새글쓰기</a>
+
     <p>
         {% for category in category_list %}
             <span class="badge bg-info">

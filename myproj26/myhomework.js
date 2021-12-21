@@ -26,14 +26,16 @@ function shuffle(animal_names) {
 }
 
 // TODO: slicing
-const shuffle_name = shuffle(animal_names.slice(0, 5));
+const shuffle_name = shuffle(animal_names);
+// 나오는 동물만 나와서 식 수정....
+const slice_name = shuffle_name.slice(0, 5)
 
 // TODO: input 받기 (친구들 과제 참조...)
 const { question } = require("readline-sync");
 
 let ok_count = 0;
 
-for (random_name of shuffle_name) {
+for (random_name of slice_name) {
     console.log(`>>>> ${random_name} <<<<`);
     const line = question("*--------- Answer : ");
 

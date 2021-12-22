@@ -7,10 +7,10 @@ console.log(``)
 // Array의 filter와 map 활용
 // 출력포맷 : [곡명1, 곡명2, 곡명3]
 
-filter_array = song_array.filter(song => song.artist === "방탄소년단");
 
-const mapping_song = filter_array.map(
-    (song) => (song.title));
+const bts_title_array = song_array
+    .filter(({ artist }) => artist === "방탄소년단")
+    .map(({ title }) => title);
 
 
-console.log(mapping_song)
+console.log(bts_title_array)

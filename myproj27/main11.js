@@ -6,10 +6,24 @@ console.log(``)
 
 // Set와 속성 .size를 활용
 
-const mapping_song = song_array.map(
-    (song) => (song.artist));
 
-const artist_set = new Set(mapping_song);
+const artist_array = song_array
+    .map(({ artist }) => artist);
+
+const artiest_set = new Set(artist_array);
+console.log(`총 ${artiest_set.size} 팀`);
 
 
-console.log(`총 ${artist_set.size} 팀`);
+// reduce를 활용
+
+
+const artist_count = song_array
+    .map(({ artist }) => artist)
+    .reduce((acc, artist) => {
+        acc.add(artist);
+        return acc;
+    }, new Set())
+    .size;
+
+
+console.log(`총 ${artist_count} 팀`);

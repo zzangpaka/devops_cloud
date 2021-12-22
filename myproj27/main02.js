@@ -7,12 +7,10 @@ console.log(``)
 // 출력포맷 : `가수명 곡명 좋아요수`
 // Array의 filter 활용
 
-filter_array = song_array.filter(song => song.artist === "방탄소년단");
 
-filter_array.sort(function (song1, song2) {
-    return song1.like - song2.like;
-});
+const bts_song_array = song_array
+    .filter(({ artist }) => artist === "방탄소년단") // (song => True, False)
 
-for (const song of filter_array) {
-    console.log(`[${song.artist}]`, song.title, song.like);
+for (const { like, title, artist } of bts_song_array) {
+    console.log(`[${artist}] ${title} ${like}`);
 }

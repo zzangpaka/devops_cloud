@@ -7,10 +7,15 @@ console.log(``)
 // Array의 filter와 map 활용
 // 출력포맷 : [곡명1, 곡명2, 곡명3]
 
-filter_array = song_array.filter(song => song.title.includes('사랑'));
 
-const mapping_song = filter_array.map(
-    (song) => (song.title));
+const love_song_array = song_array
+    .filter(
+        // song => song.title.indexOf("사랑") > -1;
+        ({ title }) => title.includes("사랑")
+    )
+    .map(
+        ({ title }) => title
+    );
 
 
-console.log(mapping_song);
+console.log(love_song_array)

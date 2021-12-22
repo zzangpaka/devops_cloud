@@ -6,11 +6,14 @@ console.log(``)
 
 // Array의 filter와 map 활용
 
-filter_array = song_array.filter(song => song.like >= 200000);
 
-const mapping_song = filter_array.map(
-    (song) => (song.title));
+const like_song = song_array
+    .filter(
+        ({ like }) => like >= 200_000
+    )
+    .map(
+        ({ title }) => title
+    );
 
-for (const song of mapping_song) {
-    console.log(`[${song}]`);
-}
+
+console.log(like_song)

@@ -2,11 +2,17 @@
 // import MelonTop100 from "MelonTop100";
 
 import MelonSearch from "MelonSearch";
+import { PageHeader } from 'antd';
+
 
 function App() {
   return (
     <div>
-      <h1>안녕 리액트</h1>
+      <PageHeader
+        className="site-page-header"
+        title="MELON"
+        subTitle="with React"
+      />,
       <MelonSearch />
       {/* <MelonTop100 />
       <Counter />

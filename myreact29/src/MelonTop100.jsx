@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { Button } from "react-bootstrap";
+import { Button as BootstrapButton } from "react-bootstrap";
+import { Button as AntdButton } from "antd";
 import initialSongList from "./data/melon_data.json";
 import "MelonTop100.css";
 
@@ -16,11 +17,12 @@ function MelonTop100() {
     return (
         <div>
             <h2>멜론 top 100</h2>
-            <Button onClick={handleClick}>로딩</Button>
+            <BootstrapButton variant="success" onClick={handleClick}>로딩</BootstrapButton>
+            <AntdButton type="primary" onClick={handleClick}>로딩</AntdButton>
             <ul className="songList">
                 {
                     songList.map(song => {
-                        return <li>{song.rank} {song.title} {song.artist}</li>;
+                        return <li key={song.song_no}>{song.rank} {song.title} {song.artist}</li>;
                     })
                 }
             </ul>

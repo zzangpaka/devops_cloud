@@ -10,15 +10,20 @@ function Counter() {
     setColor( value % 2 === 0 ? 'green' : 'red');
   };
   return ( 
-    <div style={{ 
-      backgroundColor: color,
-      width: 100,
-      height: 100,
-      display: 'inline-block',
-       
-      }}>
-      카운터 : {value}
-      <button onClick={handleClick}>증가</button>
+    <div
+      style={{
+        backgroundColor: color,
+        width: 100,
+        height: 100,
+        display: 'inline-block',
+        margin: 5,
+        borderRadius: 50,
+        textAlign: 'center',
+        userSelect: 'none',
+      }}
+      onClick={handleClick}
+    >
+      <span>{value}</span>
     </div>
   );
 }

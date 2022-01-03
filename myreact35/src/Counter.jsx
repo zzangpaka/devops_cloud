@@ -36,6 +36,18 @@ function Counter() {
     });
   };
 
+  const handleGreen = () => {
+    setColor((userSelect) => (userSelect = "Green"));
+  };
+
+  const handleBlue = () => {
+    setColor((userSelect) => (userSelect = "Blue"));
+  };
+
+  const handleRed = () => {
+    setColor((userSelect) => (userSelect = "Red"));
+  };
+
   return (
     <div>
       <h2>Counter</h2>
@@ -43,6 +55,9 @@ function Counter() {
       <hr />
       <button onClick={handlePlus}>증가</button>
       <button onClick={handleMinus}>감소</button>
+      <button onClick={handleGreen}>초록</button>
+      <button onClick={handleBlue}>파랑</button>
+      <button onClick={handleRed}>빨강</button>
     </div>
   );
 }

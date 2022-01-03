@@ -1,15 +1,39 @@
 import { useState } from "react";
 
+function dispatch(action, prevState) {
+  const { type, amount } = action;
+  if (type === "PLUS") {
+    return prevState + amount;
+  } else if (type === "MINUS") {
+    return prevState - amount;
+  }
+  return prevState;
+}
+
 function Counter() {
   const [value, setValue] = useState(0);
   const [color, setColor] = useState("red");
 
+  // const handlePlus = () => {
+  //   setValue((prevValue) => prevValue + 1);
+  // };
+
+  // const handleMinus = () => {
+  //   setValue((prevValue) => prevValue - 1);
+  // };
+
   const handlePlus = () => {
-    setValue((prevValue) => prevValue + 1);
+    const action = { type: "PLUS", amount: 1 };
+    setValue((prevValue) => {
+      return dispatch(action, prevValue);
+    });
   };
 
   const handleMinus = () => {
-    setValue((prevValue) => prevValue - 1);
+    const action = { type: "MINUS", amount: 1 };
+    setValue((prevValue) => {
+      return dispatch(action, prevValue);
+    });
   };
 
   return (

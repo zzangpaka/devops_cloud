@@ -3,9 +3,9 @@ import { useState } from "react";
 function reducer(action, prevState) {
   const { type, amount } = action;
   if (type === "PLUS") {
-    return { ...prevState, value: prevState + amount };
+    return { ...prevState, value: prevState.value + amount };
   } else if (type === "MINUS") {
-    return { ...prevState, value: prevState - amount };
+    return { ...prevState, value: prevState.value - amount };
   }
   return { ...prevState, value: prevState };
 }

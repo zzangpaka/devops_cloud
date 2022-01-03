@@ -1,47 +1,39 @@
 import { useState } from "react";
 
 function Counter() {
-  const [value, setValue] = useState(0);
-  const [color, setColor] = useState("red");
-
-  // const handlePlus = () => {
-  //   setValue(value + 1);
-  // };
-
-  // const handleMinus = () => {
-  //   setValue(value - 1);
-  // };
+  const [state, setState] = useState({ value: 0, color: "red" });
+  const { value, color } = state;
 
   const handlePlus = () => {
-    setValue((prevValue) => prevValue + 1);
+    setState((prevState) => ({
+      ...prevState,
+      value: prevState.value + 1,
+    }));
   };
-
   const handleMinus = () => {
-    setValue((prevValue) => prevValue - 1);
+    setState((prevState) => ({
+      ...prevState,
+      value: prevState.value - 1,
+    }));
   };
-
-  // const handleGreen = () => {
-  //   setColor("green");
-  // };
-
-  // const handleBlue = () => {
-  //   setColor("blue");
-  // };
-
-  // const handleRed = () => {
-  //   setColor("red");
-  // };
 
   const handleGreen = () => {
-    setColor(() => "green");
+    setState((prevState) => ({
+      ...prevState,
+      color: "green",
+    }));
   };
-
   const handleBlue = () => {
-    setColor(() => "blue");
+    setState((prevState) => ({
+      ...prevState,
+      color: "blue",
+    }));
   };
-
   const handleRed = () => {
-    setColor(() => "red");
+    setState((prevState) => ({
+      ...prevState,
+      color: "red",
+    }));
   };
 
   return (

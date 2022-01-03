@@ -1,20 +1,30 @@
 import { useState } from "react";
 
+function reducer(action, prevState) {
+  const { type, amount } = action;
+  if (type === "PLUS") {
+    return { ...prevState, value: prevState + amount };
+  } else if (type === "MINUS") {
+    return { ...prevState, value: prevState - amount };
+  }
+  return { ...prevState, value: prevState };
+}
+
 function Counter() {
   const [state, setState] = useState({ value: 0, color: "red" });
   const { value, color } = state;
 
   const handlePlus = () => {
-    setState((prevState) => ({
-      ...prevState,
-      value: prevState.value + 1,
-    }));
+    const action = { type: "PLUS", amount: 1 };
+    setState((prevState) => {
+      return reducer(action, prevState);
+    });
   };
   const handleMinus = () => {
-    setState((prevState) => ({
-      ...prevState,
-      value: prevState.value - 1,
-    }));
+    const action = { type: "MINUS", amount: 1 };
+    setState((prevState) => {
+      return reducer(action, prevState);
+    });
   };
 
   const handleGreen = () => {

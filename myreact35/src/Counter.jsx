@@ -1,81 +1,47 @@
 import { useState } from "react";
 
-function dispatch(action, prevState) {
-  const { type, amount } = action;
-  if (type === "PLUS") {
-    return prevState + amount;
-  } else if (type === "MINUS") {
-    return prevState - amount;
-  }
-  return prevState;
-}
-
-function dispatch2(action, prevColor) {
-  const { color } = action;
-  if (color === "GREEN") {
-    return (prevColor = "GREEN");
-  } else if (color === "BLUE") {
-    return (prevColor = "BLUE");
-  } else return (prevColor = "RED");
-}
-
 function Counter() {
   const [value, setValue] = useState(0);
   const [color, setColor] = useState("red");
 
   // const handlePlus = () => {
-  //   setValue((prevValue) => prevValue + 1);
+  //   setValue(value + 1);
   // };
 
   // const handleMinus = () => {
-  //   setValue((prevValue) => prevValue - 1);
+  //   setValue(value - 1);
   // };
 
   const handlePlus = () => {
-    const action = { type: "PLUS", amount: 1 };
-    setValue((prevValue) => {
-      return dispatch(action, prevValue);
-    });
+    setValue((prevValue) => prevValue + 1);
   };
 
   const handleMinus = () => {
-    const action = { type: "MINUS", amount: 1 };
-    setValue((prevValue) => {
-      return dispatch(action, prevValue);
-    });
+    setValue((prevValue) => prevValue - 1);
   };
 
   // const handleGreen = () => {
-  //   setColor((userSelect) => (userSelect = "Green"));
+  //   setColor("green");
   // };
 
   // const handleBlue = () => {
-  //   setColor((userSelect) => (userSelect = "Blue"));
+  //   setColor("blue");
   // };
 
   // const handleRed = () => {
-  //   setColor((userSelect) => (userSelect = "Red"));
+  //   setColor("red");
   // };
 
   const handleGreen = () => {
-    const action = { color: "GREEN" };
-    setColor((userSelect) => {
-      return dispatch2(action, userSelect);
-    });
+    setColor(() => "green");
   };
 
   const handleBlue = () => {
-    const action = { color: "BLUE" };
-    setColor((userSelect) => {
-      return dispatch2(action, userSelect);
-    });
+    setColor(() => "blue");
   };
 
   const handleRed = () => {
-    const action = { color: "RED" };
-    setColor((userSelect) => {
-      return dispatch2(action, userSelect);
-    });
+    setColor(() => "red");
   };
 
   return (
@@ -99,7 +65,7 @@ const defaultStyle = {
   lineHeight: "100px",
   textAlign: "center",
   display: "inline-block",
-  fonstSize: "3rem",
+  fontSize: "3rem",
   userSelect: "none",
 };
 

@@ -10,6 +10,15 @@ function dispatch(action, prevState) {
   return prevState;
 }
 
+function dispatch2(action, prevColor) {
+  const { color } = action;
+  if (color === "GREEN") {
+    return (prevColor = "GREEN");
+  } else if (color === "BLUE") {
+    return (prevColor = "BLUE");
+  } else return (prevColor = "RED");
+}
+
 function Counter() {
   const [value, setValue] = useState(0);
   const [color, setColor] = useState("red");
@@ -36,16 +45,37 @@ function Counter() {
     });
   };
 
+  // const handleGreen = () => {
+  //   setColor((userSelect) => (userSelect = "Green"));
+  // };
+
+  // const handleBlue = () => {
+  //   setColor((userSelect) => (userSelect = "Blue"));
+  // };
+
+  // const handleRed = () => {
+  //   setColor((userSelect) => (userSelect = "Red"));
+  // };
+
   const handleGreen = () => {
-    setColor((userSelect) => (userSelect = "Green"));
+    const action = { color: "GREEN" };
+    setColor((userSelect) => {
+      return dispatch2(action, userSelect);
+    });
   };
 
   const handleBlue = () => {
-    setColor((userSelect) => (userSelect = "Blue"));
+    const action = { color: "BLUE" };
+    setColor((userSelect) => {
+      return dispatch2(action, userSelect);
+    });
   };
 
   const handleRed = () => {
-    setColor((userSelect) => (userSelect = "Red"));
+    const action = { color: "RED" };
+    setColor((userSelect) => {
+      return dispatch2(action, userSelect);
+    });
   };
 
   return (

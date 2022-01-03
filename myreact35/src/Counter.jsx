@@ -1,13 +1,15 @@
 import { useState } from "react";
 
 function reducer(action, prevState) {
-  const { type, amount } = action;
+  const { type, amount, color } = action;
   if (type === "PLUS") {
     return { ...prevState, value: prevState.value + amount };
   } else if (type === "MINUS") {
     return { ...prevState, value: prevState.value - amount };
+  } else if (type === "CHANGE") {
+    return { ...prevState, color };
   }
-  return { ...prevState, value: prevState };
+  return { ...prevState };
 }
 
 function Counter() {
@@ -28,22 +30,22 @@ function Counter() {
   };
 
   const handleGreen = () => {
-    setState((prevState) => ({
-      ...prevState,
-      color: "green",
-    }));
+    const action = { type: "CHANGE", color: "green" };
+    setState((prevState) => {
+      return reducer(action, prevState);
+    });
   };
   const handleBlue = () => {
-    setState((prevState) => ({
-      ...prevState,
-      color: "blue",
-    }));
+    const action = { type: "CHANGE", color: "blue" };
+    setState((prevState) => {
+      return reducer(action, prevState);
+    });
   };
   const handleRed = () => {
-    setState((prevState) => ({
-      ...prevState,
-      color: "red",
-    }));
+    const action = { type: "CHANGE", color: "red" };
+    setState((prevState) => {
+      return reducer(action, prevState);
+    });
   };
 
   return (

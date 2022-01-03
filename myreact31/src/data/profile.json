@@ -1,0 +1,30 @@
+[
+    {
+        "name": "DCODELAB",
+        "role": "UI/UX INTERACTIVE DEVELOPER",
+        "facebook_url": "Visit My Facebook page",
+        "email": "hadaboni80@naver.com",
+        "profileImage": "member1"
+    },
+    {
+        "name": "SONGSONG",
+        "role": "SPITZ",
+        "facebook_url": "Visit My Facebook page",
+        "email": "songsong@naver.com",
+        "profileImage": "member2"
+    },
+    {
+        "name": "GGAMI",
+        "role": "MIX",
+        "facebook_url": "Visit My Facebook page",
+        "email": "ggami@naver.com",
+        "profileImage": "member3"
+    },
+    {
+        "name": "ZZANGPAKA",
+        "role": "ALPACA",
+        "facebook_url": "Visit My Facebook page",
+        "email": "zzangpaka@naver.com",
+        "profileImage": "member4"
+    }
+]

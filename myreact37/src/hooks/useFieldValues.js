@@ -1,17 +1,22 @@
 import { useState } from 'react';
 
-function useFieldValues() {
-  const [fieldValues, setFieldValues] = useState({});
+function useFieldValues(initialFieldValues) {
+  const [fieldValues, setFieldValues] = useState(initialFieldValues);
+
+  const clearFieldValues = () => setFieldValues(initialFieldValues);
 
   const handleChange = (e) => {
-  const { name, value } = e.target;
-  setFieldValues({
-    ...fieldValues,
-    [name]: value,
+    const { name, value } = e.target;
+
+    setFieldValues((prevFieldValues) => {
+      return {
+        ...prevFieldValues,
+        [name]: value,
+      };
     });
   };
 
-  return [fieldValues, handleChange];
+  return [fieldValues, handleChange, clearFieldValues];
 }
 
 export default useFieldValues;

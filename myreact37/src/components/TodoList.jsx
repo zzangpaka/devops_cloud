@@ -5,20 +5,33 @@ import TodoForm from './TodoForm';
 import useFieldValues from 'hooks/useFieldValues';
 
 const INITIAL_STATE = [
-  { content: '2022년' },
-  { content: '호랑이해' },
-  { content: '멋있어' },
+  { content: '2022년', color: 'LavenderBlush' },
+  { content: '호랑이해', color: 'Azure' },
+  { content: '멋있어', color: 'GhostWhite' },
 ];
 
 function TodoList() {
   const [todoList, setTodoList] = useState(INITIAL_STATE);
-
-  const [fieldValues, handleChange] = useFieldValues();
+  const [fieldValues, handleChange, clearFieldValues] = useFieldValues({
+    content: '',
+    color: 'LavenderBlush',
+  });
 
   const removeTodo = (TodoIndex) => {
     setTodoList((prevTodoList) =>
       prevTodoList.filter((_, index) => index !== TodoIndex),
     );
+  };
+
+  const appendTodo = () => {
+    console.log('새로운 todo를 추가하겠습니다.');
+
+    const todo = { ...fieldValues };
+
+    // setTodoList([...todoList, todo]);
+    setTodoList((prevTodoList) => [...prevTodoList, todo]);
+
+    clearFieldValues();
   };
 
   //   const changedInputText = (e) => {
@@ -43,9 +56,20 @@ function TodoList() {
     <div className="todo-list">
       <h2>Todo List</h2>
 
-      <TodoForm handleChange={handleChange} />
+      <TodoForm
+        fieldValues={fieldValues}
+        handleChange={handleChange}
+        handleSubmit={appendTodo}
+      />
       <hr />
       {JSON.stringify(fieldValues)}
+
+      <button
+        className="bg-red-500 text-gray-100 cursor-pointer"
+        onClick={() => clearFieldValues()}
+      >
+        clear
+      </button>
 
       {/* <input
         type="text"

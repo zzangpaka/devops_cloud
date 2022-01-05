@@ -1,9 +1,12 @@
+import PageCounter from 'pages/PageCounter';
+import PageTodoList from 'pages/PageTodoList';
 import './App.css';
 
 function App() {
   return (
     <div>
-      Hello React
+      {/* <PageCounter /> */}
+      <PageTodoList />
     </div>
   );
 }

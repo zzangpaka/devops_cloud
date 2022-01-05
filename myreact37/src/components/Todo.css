@@ -1,0 +1,7 @@
+.todo {
+  background-color: aliceblue;
+}
+
+.todo:hover {
+  background-color: antiquewhite;
+}

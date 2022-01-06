@@ -1,3 +1,5 @@
+import Rate from './Rate';
+
 function ReviewForm({ fieldValues, handleChange, handleSubmit }) {
   return (
     <div>
